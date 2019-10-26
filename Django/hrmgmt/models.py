@@ -2,10 +2,11 @@ from django.db import models
 
 from mptt.models import MPTTModel, TreeForeignKey
 
-from faker import Faker
+#from faker import Faker
 
 # Create your models here.
 class Employee(MPTTModel):
+    JUNIOR = 'JUN'
     STANDARD = 'STD'
     UPPER = 'UPP'
     MANAGER = 'MGR'
@@ -13,6 +14,7 @@ class Employee(MPTTModel):
     PRESIDENT = 'CEO'
 
     EMPLOYEE_TYPES = (
+        (JUNIOR, 'junior employee'),
         (STANDARD, 'base employee'),
         (UPPER, 'upper employee'),
         (MANAGER, 'manager'),
@@ -21,11 +23,12 @@ class Employee(MPTTModel):
     )
 
     EMPLOYEE_PAYS = (
-        (STANDARD, 500),
-        (UPPER, 700),
-        (MANAGER, 1000),
-        (SR_MANAGER, 1200),
-        (PRESIDENT, 1500)
+        (JUNIOR, 500),
+        (STANDARD, 800),
+        (UPPER, 1200),
+        (MANAGER, 1500),
+        (SR_MANAGER, 2000),
+        (PRESIDENT, 3000)
 )
 # Employee.objects.create(name = Faker().name(), date=Faker().date_between(start_date='-10y', end_date='today'),role=Employee.PRESIDENT, salary=Employee.PRESIDENT)
     role = models.CharField(max_length=25, choices=EMPLOYEE_TYPES)
