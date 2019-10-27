@@ -33,7 +33,9 @@ class Command(BaseCommand):
         date=fk.date_between(start_date='-10y', end_date='today'),
         role=Employee.PRESIDENT,
         salary=Employee.PRESIDENT,)
+        count = 0
         for s in range(10):
+            count += 1
             sr =  Employee.objects.create(
             name = fk.name(),
             date=fk.date_between(start_date='-10y', end_date='today'),
@@ -41,34 +43,38 @@ class Command(BaseCommand):
             salary=dct[1],
             parent=ceo)
             for m in range(5):
+                count += 1
                 man = Employee.objects.create(
                 name = fk.name(),
                 date=fk.date_between(start_date='-10y', end_date='today'),
                 role=dct[2],
                 salary=dct[2],
                 parent=sr)
-                for u in range(7):
+                for u in range(5):
+                    count += 1
                     up = Employee.objects.create(
                     name = fk.name(),
                     date=fk.date_between(start_date='-10y', end_date='today'),
                     role=dct[3],
                     salary=dct[3],
                     parent=man)
-                    for u in range(7):
-                        up = Employee.objects.create(
+                    for st in range(7):
+                        count += 1
+                        std = Employee.objects.create(
                         name = fk.name(),
                         date=fk.date_between(start_date='-10y', end_date='today'),
-                        role=dct[3],
-                        salary=dct[3],
-                        parent=man)
-                        for u in range(7):
-                            up = Employee.objects.create(
+                        role=dct[4],
+                        salary=dct[4],
+                        parent=up)
+                        for j in range(2):
+                            count += 1
+                            jun = Employee.objects.create(
                             name = fk.name(),
                             date=fk.date_between(start_date='-10y', end_date='today'),
-                            role=dct[3],
-                            salary=dct[3],
-                            parent=man)
-                            print(up, man, sr)
+                            role=dct[5],
+                            salary=dct[5],
+                            parent=std)
+                            print(jun, std, up, man, sr, count)
 
 
         # for i in range(int(options['users']/66)):
