@@ -46,7 +46,7 @@ class Command(BaseCommand):
                 count += 1
                 man = Employee.objects.create(
                 name = fk.name(),
-                date=fk.date_between(start_date='-10y', end_date='today'),
+                date=fk.date_between(start_date='-8y', end_date='today'),
                 role=dct[2],
                 salary=dct[2],
                 parent=sr)
@@ -54,7 +54,7 @@ class Command(BaseCommand):
                     count += 1
                     up = Employee.objects.create(
                     name = fk.name(),
-                    date=fk.date_between(start_date='-10y', end_date='today'),
+                    date=fk.date_between(start_date='-6y', end_date='today'),
                     role=dct[3],
                     salary=dct[3],
                     parent=man)
@@ -62,7 +62,7 @@ class Command(BaseCommand):
                         count += 1
                         std = Employee.objects.create(
                         name = fk.name(),
-                        date=fk.date_between(start_date='-10y', end_date='today'),
+                        date=fk.date_between(start_date='-4y', end_date='today'),
                         role=dct[4],
                         salary=dct[4],
                         parent=up)
@@ -70,7 +70,7 @@ class Command(BaseCommand):
                             count += 1
                             jun = Employee.objects.create(
                             name = fk.name(),
-                            date=fk.date_between(start_date='-10y', end_date='today'),
+                            date=fk.date_between(start_date='-2y', end_date='today'),
                             role=dct[5],
                             salary=dct[5],
                             parent=std)
